@@ -1,0 +1,22 @@
+﻿@import "tailwindcss";
+
+@theme {
+  --color-navy: #0a1628;
+  --color-soft-blue: #a8c5da;
+  --color-ice-white: #f0f4f8;
+}
+
+/* *, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: sans-serif;
+} */
