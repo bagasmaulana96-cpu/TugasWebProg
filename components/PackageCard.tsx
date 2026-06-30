@@ -1,4 +1,5 @@
 ﻿import Link from "next/link";
+import Image from "next/image";
 
 type Package = {
   id: string;
@@ -15,14 +16,16 @@ export default function PackageCard({ pkg }: { pkg: Package }) {
       `Halo Admin, saya ingin memesan paket wisata "${pkg.title}" seharga Rp ${pkg.price.toLocaleString("id-ID")}. Mohon informasinya lebih lanjut.`,
   );
 
-  const whatsappUrl = `https://wa.me/6285740863333?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=${whatsappMessage}`;
 
   return (
     <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition group">
       <div className="overflow-hidden h-48">
-        <img
+        <Image
           src={pkg.image_url || "https://placehold.co/600x400?text=Desa+Anjay"}
           alt={pkg.title}
+          width={600}
+          height={400}
           className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
         />
       </div>
