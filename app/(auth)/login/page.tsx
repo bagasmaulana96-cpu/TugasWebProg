@@ -12,7 +12,8 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
     setLoading(true);
     setError("");
 
@@ -48,7 +49,7 @@ export default function LoginPage() {
         )}
 
         {/* Form */}
-        <div className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-navy mb-1">
               Email
@@ -70,19 +71,19 @@ export default function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+              placeholder="Password Anda"
               className="w-full border border-soft-blue rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy"
             />
           </div>
 
           <button
-            onClick={handleLogin}
+            type="submit"
             disabled={loading}
             className="w-full bg-navy text-white font-semibold py-2.5 rounded-lg hover:bg-opacity-90 transition disabled:opacity-60 mt-2"
           >
             {loading ? "Memproses..." : "Masuk"}
           </button>
-        </div>
+        </form>
 
         {/* Register Link */}
         <p className="text-center text-sm text-gray-500 mt-6">
