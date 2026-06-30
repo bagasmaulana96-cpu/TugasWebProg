@@ -1,7 +1,8 @@
-﻿import { supabase } from "@/lib/supabase";
+﻿import { createSupabaseServerClient } from "@/lib/supabase-server";
 import PackageCard from "@/components/PackageCard";
 
 export default async function Home() {
+  const supabase = await createSupabaseServerClient();
   const { data: packages, error } = await supabase
     .from("packages")
     .select("*")
@@ -85,7 +86,7 @@ export default async function Home() {
             Anjay.
           </p>
           <a
-            href="https://wa.me/6285740862393"
+            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block mt-8 bg-white text-navy font-bold px-8 py-3 rounded-full hover:bg-ice-white transition"
