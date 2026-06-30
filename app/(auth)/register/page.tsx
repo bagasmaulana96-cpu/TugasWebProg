@@ -11,7 +11,8 @@ export default function RegisterPage() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
-  const handleRegister = async () => {
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
     setLoading(true);
     setError("");
     setMessage("");
@@ -62,7 +63,7 @@ export default function RegisterPage() {
         )}
 
         {/* Form */}
-        <div className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-navy mb-1">
               Email
@@ -90,13 +91,13 @@ export default function RegisterPage() {
           </div>
 
           <button
-            onClick={handleRegister}
+            type="submit"
             disabled={loading}
             className="w-full bg-navy text-white font-semibold py-2.5 rounded-lg hover:bg-opacity-90 transition disabled:opacity-60 mt-2"
           >
             {loading ? "Mendaftarkan..." : "Daftar Sekarang"}
           </button>
-        </div>
+        </form>
 
         {/* Login Link */}
         <p className="text-center text-sm text-gray-500 mt-6">
