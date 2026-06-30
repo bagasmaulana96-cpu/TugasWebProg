@@ -32,12 +32,18 @@ export default function RegisterPage() {
     });
 
     if (error) {
-      setError("Gagal mendaftar. Coba gunakan email lain.");
+      console.error("Supabase signUp error:", error.message, error.status);
+      setError(error.message); // sementara tampilkan pesan asli, bukan teks generik
       setLoading(false);
       return;
     }
+    // if (error) {
+    //   setError("Gagal mendaftar. Coba gunakan email lain.");
+    //   setLoading(false);
+    //   return;
+    // }
 
-    setMessage("âœ… Pendaftaran berhasil! Cek email Anda untuk konfirmasi.");
+    setMessage("Pendaftaran berhasil! Cek email Anda untuk konfirmasi.");
     setLoading(false);
   };
 
