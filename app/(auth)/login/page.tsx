@@ -17,18 +17,24 @@ export default function LoginPage() {
     setLoading(true);
     setError("");
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
-    if (error) {
+    if (error || !data.user) {
       setError("Email atau password salah. Silakan coba lagi.");
       setLoading(false);
       return;
     }
 
-    router.push("/");
+    const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", data.user.id)
+    .single();
+
+    router.push(profile?.role === "admin" ? "/admin" : "/");
     router.refresh();
   };
 
@@ -97,7 +103,7 @@ export default function LoginPage() {
         </p>
       </div>
     </div>
-    
+
   );
 }
 
