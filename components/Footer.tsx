@@ -9,7 +9,7 @@
           </p>
         </div>
         <p className="text-sm text-soft-blue">
-          Â© {new Date().getFullYear()} Desa Wisata. All rights reserved.
+          © {new Date().getFullYear()} Desa Wisata. All rights reserved.
         </p>
       </div>
     </footer>
